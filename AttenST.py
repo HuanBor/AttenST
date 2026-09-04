@@ -260,7 +260,7 @@ if __name__ == "__main__":
 
     # Load image encoder
     image_encoder = CLIPVisionModelWithProjection.from_pretrained(
-        "/home/liyan/workspace/intern/huangbo/model_checkpoints/IP-Adapter", subfolder="models/image_encoder",
+        "/model_checkpoints/IP-Adapter", subfolder="models/image_encoder",
         torch_dtype=torch.float16
     ).to(device)
 
@@ -274,8 +274,8 @@ if __name__ == "__main__":
 
     # Configure run parameters
     config = RunConfig(model_type=model_type,
-                       num_inference_steps=40,
-                       num_inversion_steps=40,
+                       num_inference_steps=20,
+                       num_inversion_steps=20,
                        resample_steps=5,
                        scheduler_type=scheduler_type,
                        guidance_scale=guidance_scale,
@@ -359,8 +359,8 @@ if __name__ == "__main__":
 
     # Load IP-Adapter
     pipe_inference.load_ip_adapter(
-        ["/home/liyan/workspace/intern/huangbo/model_checkpoints/IP-Adapter",
-         "/home/liyan/workspace/intern/huangbo/model_checkpoints/IP-Adapter",
+        ["/model_checkpoints/IP-Adapter",
+         "/model_checkpoints/IP-Adapter",
          ],
         subfolder=["sdxl_models", "sdxl_models"],
         weight_name=[
